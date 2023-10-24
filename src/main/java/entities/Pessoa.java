@@ -1,24 +1,33 @@
 package entities;
 
+import javax.persistence.*;
 import java.util.Objects;
-
+@Entity
+@Table(name = "tb_pessoa")
 public class Pessoa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pessoa")
     private Long id;
+    @Column(name = "nome_pessoa")
     private String nome;
+    @Column(name = "sobrenome_pessoa")
     private String sobrenome;
+    @Transient
     private Endereco endereco;
+    @Transient
     private Parentesco parentesco;
-
+    @Transient
     private Contato contato;
 
     public Pessoa() {
     }
 
-    public Pessoa(Long id, String nome, String sobrenome, Endereco endereco) {
+    public Pessoa(Long id, String nome, String sobrenome) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.endereco = endereco;
+
 
     }
 
